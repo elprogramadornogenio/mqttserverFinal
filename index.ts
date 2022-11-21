@@ -7,6 +7,7 @@ import routerSensor from './routes/sensor.routes';
 import routerUsuario from './routes/usuario.routes';
 import ServerMqtt from './classes/ServerMqtt';
 import routerReportes from './routes/reportes.routes';
+import routerConexion from './routes/conexion.routes';
 
 
 
@@ -34,6 +35,7 @@ server.app.use('/', routerDatos)
 server.app.use('/', routerSensor)
 server.app.use('/', routerUsuario)
 server.app.use('/', routerReportes)
+server.app.use('/', routerConexion)
 
 
 

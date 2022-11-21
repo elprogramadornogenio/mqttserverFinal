@@ -12,6 +12,7 @@ const sensor_routes_1 = __importDefault(require("./routes/sensor.routes"));
 const usuario_routes_1 = __importDefault(require("./routes/usuario.routes"));
 const ServerMqtt_1 = __importDefault(require("./classes/ServerMqtt"));
 const reportes_routes_1 = __importDefault(require("./routes/reportes.routes"));
+const conexion_routes_1 = __importDefault(require("./routes/conexion.routes"));
 const server = ServerIo_1.default.instance;
 const mqtt = ServerMqtt_1.default.instance;
 // base de datos
@@ -29,6 +30,7 @@ server.app.use('/', datos_routes_1.default);
 server.app.use('/', sensor_routes_1.default);
 server.app.use('/', usuario_routes_1.default);
 server.app.use('/', reportes_routes_1.default);
+server.app.use('/', conexion_routes_1.default);
 server.start(() => {
     console.log(`Servidor corriendo en el puerto ${server.port}`);
 });

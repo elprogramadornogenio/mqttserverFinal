@@ -27,8 +27,9 @@ export default class mqttFunction {
             const socket = ServerIo.instance.io;
             let dato: number = 0;
             // console.log(`El topico ${Topico} publica ${payload.toString()}`);
-            if (Number(payload.toString())) {
-                dato = Number(payload.toString());
+            let decodification = Buffer.from(payload.toString(), 'base64').toString('ascii');
+            if (Number(decodification)) {
+                dato = Number(decodification) - 3;
                 Datos.instance.guardarDatos(Topico, dato);
                 socket.emit(Topico, dato);
             } else {
