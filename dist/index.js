@@ -13,6 +13,7 @@ const usuario_routes_1 = __importDefault(require("./routes/usuario.routes"));
 const ServerMqtt_1 = __importDefault(require("./classes/ServerMqtt"));
 const reportes_routes_1 = __importDefault(require("./routes/reportes.routes"));
 const conexion_routes_1 = __importDefault(require("./routes/conexion.routes"));
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const server = ServerIo_1.default.instance;
 const mqtt = ServerMqtt_1.default.instance;
 // base de datos
@@ -24,6 +25,15 @@ server.app.use(body_parser_1.default.json());
 server.app.use((0, cors_1.default)({
     origin: true,
     credentials: true
+}));
+// Cargar archivo
+server.app.use((0, express_fileupload_1.default)({
+    useTempFiles: true,
+    tempFileDir: '/tmp/',
+    createParentPath: true,
+    limits: {
+        fileSize: 10000000
+    }
 }));
 // rutas
 server.app.use('/', datos_routes_1.default);

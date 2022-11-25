@@ -19,6 +19,9 @@ const UsuarioSchema = new mongoose_1.Schema({
     password: {
         type: String,
         required: true
+    },
+    imagen: {
+        type: String
     }
 });
 exports.Usuario = (0, mongoose_1.model)('Usuario', UsuarioSchema);

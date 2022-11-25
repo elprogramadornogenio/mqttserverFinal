@@ -3,4 +3,5 @@ export interface IUsuario {
     apellido: string;
     email: string;
     password: string;
+    imagen?: string;
 }

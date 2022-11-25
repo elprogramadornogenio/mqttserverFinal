@@ -8,6 +8,7 @@ import routerUsuario from './routes/usuario.routes';
 import ServerMqtt from './classes/ServerMqtt';
 import routerReportes from './routes/reportes.routes';
 import routerConexion from './routes/conexion.routes';
+import fileUpload from 'express-fileupload';
 
 
 
@@ -29,6 +30,16 @@ server.app.use(cors({
     origin: true,
     credentials: true
 }))
+
+// Cargar archivo
+server.app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/',
+    createParentPath: true,
+    limits: {
+        fileSize: 10000000
+    }
+}));
 
 // rutas
 server.app.use('/', routerDatos)

@@ -18,6 +18,9 @@ const UsuarioSchema = new Schema<IUsuario>({
     password: {
         type: String,
         required: true
+    },
+    imagen: {
+        type: String
     }
 })
 

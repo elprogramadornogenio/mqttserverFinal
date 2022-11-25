@@ -22,4 +22,24 @@ routerUsuario.post('/login', [
     validarCampos_1.default.instance.validarCampos
 ], usuario_1.default.instance.loginUsuario);
 routerUsuario.get('/jwt', validarJwt_1.default.instance.validarJWT, usuario_1.default.instance.revalidarToken);
+routerUsuario.post('/recuperarPassword', [
+    (0, express_validator_1.check)('email', 'El email es obligatorio').isEmail(),
+    (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    (0, express_validator_1.check)('apellido', 'El apellido es obligatorio').not().isEmpty(),
+    validarCampos_1.default.instance.validarCampos
+], usuario_1.default.instance.recuperarPassword);
+routerUsuario.post('/cambiarPassword', [
+    (0, express_validator_1.check)('_id', 'El _id no es un id de mongo').isMongoId(),
+    (0, express_validator_1.check)('password', 'La contraseña es obligatoria').isLength({ min: 6 }),
+    (0, express_validator_1.check)('newPassword', 'La contraseña nueva es obligatoria').isLength({ min: 6 }),
+    validarCampos_1.default.instance.validarCampos
+], usuario_1.default.instance.cambiarPassword);
+routerUsuario.post('/editar', [
+    (0, express_validator_1.check)('_id', 'El _id no es un id de mongo').isMongoId(),
+    (0, express_validator_1.check)('email', 'El email es obligatorio').isEmail(),
+    (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    (0, express_validator_1.check)('apellido', 'El apellido es obligatorio').not().isEmpty(),
+    validarCampos_1.default.instance.validarCampos
+], usuario_1.default.instance.editarUsuario);
+routerUsuario.post('/editarImagen/:_id', [], usuario_1.default.instance.actualizarImagenPerfil);
 exports.default = routerUsuario;
